@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<bean id="businessService" class="book.chapter1.springrmi.BusinessImpl"/>
+	
+	<bean id="rmiBusinessService" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="service"><ref bean="businessService"/></property>
+		<property name="serviceName"><value>BusinessService</value></property>
+		<property name="serviceInterface"><value>book.chapter1.springrmi.Business</value></property>
+	</bean>
+
+</beans>

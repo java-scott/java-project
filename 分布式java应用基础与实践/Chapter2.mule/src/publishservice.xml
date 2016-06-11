@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesource.org/schema/mule/core/2.2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:spring="http://www.springframework.org/schema/beans"
+       xmlns:soap="http://www.mulesource.org/schema/mule/soap/2.2"
+       xmlns:axis="http://www.mulesource.org/schema/mule/axis/2.2"
+       xmlns:vm="http://www.mulesource.org/schema/mule/vm/2.2"
+    xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.mulesource.org/schema/mule/core/2.2 http://www.mulesource.org/schema/mule/core/2.2/mule.xsd
+       http://www.mulesource.org/schema/mule/soap/2.2 http://www.mulesource.org/schema/mule/soap/2.2/mule-soap.xsd
+       http://www.mulesource.org/schema/mule/axis/2.2 http://www.mulesource.org/schema/mule/axis/2.2/mule-axis.xsd
+       http://www.mulesource.org/schema/mule/vm/2.2 http://www.mulesource.org/schema/mule/vm/2.2/mule-vm.xsd">
+
+	<spring:beans>
+		<spring:import resource="resources/spring/mulepublisherbeans.xml"/>
+	</spring:beans>
+
+	<model name="HelloWorld">
+    	<service name="HelloWorldService">
+            <inbound>
+                <axis:inbound-endpoint address="http://localhost:12345/services">
+                    <soap:http-to-soap-request-transformer/>
+                </axis:inbound-endpoint>
+            </inbound>
+            <component>
+            	<spring-object bean="HelloWorldBean"/>
+            </component>
+        </service>
+    </model>
+
+</mule>

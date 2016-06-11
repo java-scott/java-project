@@ -1,0 +1,12 @@
+<composite name="HelloWorld"
+    targetNamespace="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:ns1="http://www.osoa.org/xmlns/sca/1.0">
+
+    <component name="HelloWorldComponent">
+        <implementation.spring location="resources/spring/consumebeans.xml"/>
+	<reference name="HelloWorldService">
+		<binding.ws uri="http://localhost:8080/services/HelloWorldService"/>
+	</reference>
+    </component>
+
+</composite>

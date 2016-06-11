@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sca="http://www.springframework.org/schema/sca"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd">
+       
+    <sca:reference name="HelloWorldService" type="chapter2.sca.tuscany.demo.HelloWorld"/>
+
+    <bean id="HelloWorldConsumer" class="chapter2.sca.tuscany.demo.impl.HelloWorldConsumer">
+    	<property name="service">
+    		<ref bean="HelloWorldService"/>
+    	</property>
+    </bean>
+    
+    <bean id="SpringBeanFactoryHolder" class="chapter2.sca.tuscany.demo.SpringApplicationContextHolder"/>
+</beans>
